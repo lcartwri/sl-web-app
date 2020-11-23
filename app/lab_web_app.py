@@ -44,9 +44,24 @@ class TestConfig(db.Model):
 ###### VIEW FUNCTIONS == HAVE FORMS SECTION ######
 ##################################################
 
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/aci')
+def aci_home():
+    return render_template('home.html')
+
+@app.route('/sda')
+def sda_home():
+    return render_template('home.html')
+
+@app.route('/xdomain')
+def xdomain_home():
+    return render_template('home.html')
 
 @app.route('/sdwan')
-def index():
+def sdwan_home():
     return render_template('home_sdwan.html')
 
 @app.route('/sdwan/add_test',methods=['GET','POST'])

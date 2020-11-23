@@ -11,7 +11,7 @@
 
         <! This is the Navbar>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="{{url_for('index')}}">Home</a>
+          <a class="navbar-brand" href="{{url_for('home')}}">Home</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -25,11 +25,11 @@
                   Demos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{url_for('sdwan_page')}}">SDWAN</a>
-                  <a class="dropdown-item" href="{{url_for('sda_page')}}">SDA</a>
-                  <a class="dropdown-item" href="{{url_for('aci_page')}}">ACI</a>
+                  <a class="dropdown-item" href="{{url_for('sdwan_home')}}">SDWAN</a>
+                  <a class="dropdown-item" href="{{url_for('sda_home')}}">SDA</a>
+                  <a class="dropdown-item" href="{{url_for('aci_home')}}">ACI</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{url_for('xdomain_page')}}">X-DOMAIN</a>
+                  <a class="dropdown-item" href="{{url_for('xdomain_home')}}">X-DOMAIN</a>
                 </div>
               </li>
             </ul>
