@@ -1,0 +1,13 @@
+{% extends "base_sdwan.html" %}
+{%block content%}
+<title>{%block title%}Delete Demo Test{%endblock%}</title>
+<div class='jumbotron'>
+<h1>Did a New Test for SDWAN AAR get Created?</1>
+<p>If yes please fill out the ID to remove from the DB:</p>
+<form method="POST">
+    {{form.hidden_tag()}}
+    {{form.id.label}}{{form.id}}
+    {{form.submit}}
+</form>
+</div>
+{% endblock %}

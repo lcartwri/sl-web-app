@@ -1,0 +1,24 @@
+{% extends "base_sdwan.html" %}
+{%block content%}
+<title>{%block title%}Create Demo Test{%endblock%}</title>
+<div class="jumbotron">
+    <h1 class="display-6">Create a New Test for SDWAN AAR</h1>
+    <p class="lead">Please fill out the details to create a new test:</p>
+    <hr class="my-4">
+</div>
+
+<div class="jumbotron">
+<form class="form-group" method="POST">
+    {{form.hidden_tag()}}
+    <div class="form-group">
+      <label for="formGroupExampleInput">{{form.test_name.label}}</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Test Name">
+    </div>
+    {{form.submit}}
+  </form>
+
+
+</div>
+{% endblock %}
+
+
