@@ -50,15 +50,15 @@ def home():
 
 @app.route('/aci')
 def aci_home():
-    return render_template('home.html')
+    return render_template('home_aci.html')
 
 @app.route('/sda')
 def sda_home():
-    return render_template('home.html')
+    return render_template('home_sda.html')
 
 @app.route('/xdomain')
 def xdomain_home():
-    return render_template('home.html')
+    return render_template('home_xdomain.html')
 
 @app.route('/sdwan')
 def sdwan_home():
