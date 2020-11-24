@@ -1,0 +1,28 @@
+language: generic
+services:
+  - docker
+env:
+  global:
+  - USER="lcartwri"
+  - EMAIL="lcartwri@cisco.com"
+  - REPO="sl-web-app-deploy"
+  - FILES="Dockerfile"
+  - GH_REPO="github.com/${USER}/${REPO}.git"
+  - SHA=$(git rev-parse HEAD)
+
+before_install:
+  - docker build -t lcartwri/sl-flask-web-app:$SHA .
+  # Log in to the docker 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - sudo apt update
+  - sudo apt install snapd
+  - sudo snap install kustomize
+
+after_success:
+  - docker push lcartwri/sl-flask-web-app:$SHA
+  - git config --global user.email "lcartwri@cisco.com"
+  - git config --global user.name "lcartwri"
+  - git clone https://$GH_REPO
+  - cd ./${REPO} && kustomize edit set image lcartwri/web-demo-app:$SHA
+  - git commit -am 'Publish new version docker image lcartwri/web-demo-app' 
+  - git push "https://${GH_TOKEN}@${GH_REPO}"
