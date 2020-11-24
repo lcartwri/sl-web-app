@@ -23,7 +23,7 @@ Migrate(app,db)
 ######### MODELS SECTION #########
 ##################################
 
-class TestConfig(db.Model):
+class ImpairmentTestConfig(db.Model):
     
     __tablename__ = 'impairment_values_table'
     id = db.Column(db.Integer,primary_key=True)
@@ -70,7 +70,7 @@ def new_test():
     form = AddTest()
     if form.validate_on_submit():
         test_name = form.test_name.data
-        new_test = TestConfig(test_name)
+        new_test = ImpairmentTestConfig(test_name)
         db.session.add(new_test)
         db.session.commit()
 
@@ -80,7 +80,7 @@ def new_test():
 
 @app.route('/sdwan/list_test')
 def list_test():
-    tests = TestConfig.query.all()
+    tests = ImpairmentTestConfig.query.all()
     return render_template('list_test.html',tests=tests)
 
 @app.route('/sdwan/delete_test', methods=['GET','POST'])
@@ -89,7 +89,7 @@ def del_test():
     form = DelTest()
     if form.validate_on_submit():
         id = form.id.data
-        test = TestConfig.query.get(id)
+        test = ImpairmentTestConfig.query.get(id)
         db.session.delete(test)
         db.session.commit()
 
