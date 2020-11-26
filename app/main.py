@@ -1,8 +1,10 @@
 import os
-from forms.forms import AddTest, DelTest
+from forms.forms import AddTest,DelTest
+from flask_wtf import FlaskForm
+from wtforms import StringField,IntegerField,SubmitField
 from flask import Flask,render_template,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
-#from flask_migrate import Migrate
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
@@ -27,17 +29,13 @@ class ImpairmentTestConfig(db.Model):
     __tablename__ = 'impairment_values_table'
     id = db.Column(db.Integer,primary_key=True)
     test_name = db.Column(db.Text)
-    bandwidth = db.Column(db.Integer)
-    delay = db.Column(db.Integer)
-    loss = db.Column(db.Integer)
+    #bandwidth = db.Column(db.Integer)
+    #delay = db.Column(db.Integer)
+    #loss = db.Column(db.Integer)
 
     def __init__(self,test_name):
         self.test_name = test_name
     
-    def __repr___(self):
-        return f"The test to be executed is: {self.id}"
-        #return 'TESTING'
-
 
 ##################################################
 ###### VIEW FUNCTIONS == HAVE FORMS SECTION ######
