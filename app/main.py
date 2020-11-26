@@ -1,5 +1,7 @@
 import os
-from forms.forms import AddTest, DelTest
+from forms.forms import AddTest,DelTest
+from flask_wtf import FlaskForm
+from wtforms import StringField,IntegerField,SubmitField
 from flask import Flask,render_template,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 #from flask_migrate import Migrate
@@ -31,13 +33,12 @@ class ImpairmentTestConfig(db.Model):
     delay = db.Column(db.Integer)
     loss = db.Column(db.Integer)
 
-    def __init__(self,test_name):
+    def __init__(self,test_name,bandwidth,delay,loss):
         self.test_name = test_name
+        self.bandwidth = bandwidth
+        self.delay = delay
+        self.loss = loss
     
-    def __repr___(self):
-        return f"The test to be executed is: {self.id}"
-        #return 'TESTING'
-
 
 ##################################################
 ###### VIEW FUNCTIONS == HAVE FORMS SECTION ######
@@ -69,7 +70,7 @@ def new_test():
     form = AddTest()
     if form.validate_on_submit():
         test_name = form.test_name.data
-        new_test = ImpairmentTestConfig(test_name)
+        new_test = ImpairmentTestConfig(test_name,0,0,0)
         db.session.add(new_test)
         db.session.commit()
 
@@ -82,19 +83,16 @@ def list_test():
     tests = ImpairmentTestConfig.query.all()
     return render_template('list_test.html',tests=tests)
 
-@app.route('/sdwan/delete_test', methods=['GET','POST'])
-def del_test():
+@app.route('/sdwan/delete_test/<int:id>', methods=['GET','POST'])
+def del_test(id):
 
-    form = DelTest()
-    if form.validate_on_submit():
-        id = form.id.data
-        test = ImpairmentTestConfig.query.get(id)
-        db.session.delete(test)
-        db.session.commit()
+    test = ImpairmentTestConfig.query.get(id)
+    db.session.delete(test)
+    db.session.commit()
 
-        return redirect(url_for('list_test'))
+    return redirect(url_for('list_test'))
     
-    return render_template('delete_test.html',form=form)
+    #return render_template('delete_test.html',form=form)
 
 if __name__ == '__main__':
     db.create_all()
