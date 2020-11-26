@@ -1,6 +1,6 @@
 data.sqlite
-slproject/_pycache__
-slproject/sda/_pycache__
-slproject/sdwan/_pycache__
-slproject/aci/_pycache__
-slproject/xdomain/_pycache__
+slproject/__pycache__/
+slproject/sda/__pycache__/
+slproject/sdwan/__pycache__/
+slproject/aci/_pycache__/
+slproject/xdomain/_pycache__/
