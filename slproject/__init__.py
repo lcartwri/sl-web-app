@@ -14,14 +14,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'da
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-db.create_all()
 #Migrate(app,db)
 
 # NOTE! These imports need to come after you've defined db, otherwise you will
 # get errors in your models.py files.
 ## Grab the blueprints from the other views.py files for each "app"
-from slproject.sdwan.views import sdwan_blueprint
-from slproject.sda.views import sda_blueprint
+from slproject.sdwan.views import sdwan
+from slproject.sda.views import sda
 
-app.register_blueprint(sdwan_blueprint,url_prefix="/sdwan")
-app.register_blueprint(sda_blueprint,url_prefix='/sda')
+app.register_blueprint(sdwan,url_prefix="/sdwan")
+app.register_blueprint(sda,url_prefix='/sda')
