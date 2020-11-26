@@ -1,2 +1,6 @@
 data.sqlite
-app/forms/__pycache__
+slproject/_pycache__
+slproject/sda/_pycache__
+slproject/sdwan/_pycache__
+slproject/aci/_pycache__
+slproject/xdomain/_pycache__
