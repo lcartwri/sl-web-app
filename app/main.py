@@ -1,5 +1,5 @@
 import os
-from forms import AddTest, DelTest
+from forms.forms import AddTest, DelTest
 from flask import Flask,render_template,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
 #from flask_migrate import Migrate
