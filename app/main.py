@@ -1,4 +1,5 @@
 import os
+import sys
 from forms import AddTest, DelTest
 from flask import Flask,render_template,url_for,redirect
 from flask_sqlalchemy import SQLAlchemy
@@ -32,13 +33,11 @@ class ImpairmentTestConfig(db.Model):
     delay = db.Column(db.Integer)
     loss = db.Column(db.Integer)
 
-    def __init__(self,test_name):
+    def __init__(self, test_name, bandwidth, delay, loss):
         self.test_name = test_name
-    
-    def __repr___(self):
-        return f"The test to be executed is: {self.id}"
-        #return 'TESTING'
-
+        self.bandwidth = bandwidth
+        self.delay = delay
+        self.loss = loss
 
 ##################################################
 ###### VIEW FUNCTIONS == HAVE FORMS SECTION ######
@@ -70,7 +69,7 @@ def new_test():
     form = AddTest()
     if form.validate_on_submit():
         test_name = form.test_name.data
-        new_test = ImpairmentTestConfig(test_name)
+        new_test = ImpairmentTestConfig(test_name, 0, 0, 0)
         db.session.add(new_test)
         db.session.commit()
 
@@ -99,4 +98,4 @@ def del_test():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
