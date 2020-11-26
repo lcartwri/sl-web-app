@@ -11,8 +11,9 @@
 <form class="form-group" method="POST">
     {{form.hidden_tag()}}
     <div class="form-group">
+
       <label for="formGroupExampleInput">{{form.test_name.label}}</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Test Name">
+      {{form.test_name}}
     </div>
     {{form.submit}}
   </form>
