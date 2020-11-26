@@ -22,7 +22,6 @@ db = SQLAlchemy(app)
 ##################################
 ######### MODELS SECTION #########
 ##################################
-
 class ImpairmentTestConfig(db.Model):
     
     __tablename__ = 'impairment_values_table'
