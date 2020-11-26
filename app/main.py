@@ -29,12 +29,15 @@ class ImpairmentTestConfig(db.Model):
     __tablename__ = 'impairment_values_table'
     id = db.Column(db.Integer,primary_key=True)
     test_name = db.Column(db.Text)
-    #bandwidth = db.Column(db.Integer)
-    #delay = db.Column(db.Integer)
-    #loss = db.Column(db.Integer)
+    bandwidth = db.Column(db.Integer)
+    delay = db.Column(db.Integer)
+    loss = db.Column(db.Integer)
 
-    def __init__(self,test_name):
+    def __init__(self,test_name,bandwidth,delay,loss):
         self.test_name = test_name
+        self.bandwidth = bandwidth
+        self.delay = delay
+        self.loss = loss
     
 
 ##################################################
@@ -67,7 +70,7 @@ def new_test():
     form = AddTest()
     if form.validate_on_submit():
         test_name = form.test_name.data
-        new_test = ImpairmentTestConfig(test_name)
+        new_test = ImpairmentTestConfig(test_name,0,0,0)
         db.session.add(new_test)
         db.session.commit()
 
@@ -80,19 +83,16 @@ def list_test():
     tests = ImpairmentTestConfig.query.all()
     return render_template('list_test.html',tests=tests)
 
-@app.route('/sdwan/delete_test', methods=['GET','POST'])
-def del_test():
+@app.route('/sdwan/delete_test/<int:id>', methods=['GET','POST'])
+def del_test(id):
 
-    form = DelTest()
-    if form.validate_on_submit():
-        id = form.id.data
-        test = ImpairmentTestConfig.query.get(id)
-        db.session.delete(test)
-        db.session.commit()
+    test = ImpairmentTestConfig.query.get(id)
+    db.session.delete(test)
+    db.session.commit()
 
-        return redirect(url_for('list_test'))
+    return redirect(url_for('list_test'))
     
-    return render_template('delete_test.html',form=form)
+    #return render_template('delete_test.html',form=form)
 
 if __name__ == '__main__':
     db.create_all()
