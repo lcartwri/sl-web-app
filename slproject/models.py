@@ -7,14 +7,17 @@ class AarTest(db.Model):
 
     __tablename__ = 'sdwanaartest'
 
-    id = db.Column(db.Integer,primary_key= True)
+    id = db.Column(db.Integer,primary_key=True)
     test_name = db.Column(db.Text)
-    # We use puppies.id because __tablename__='puppies'
-    #puppy_id = db.Column(db.Integer,db.ForeignKey('puppies.id'))
+    ###bandwidth = db.Column(db.Integer)
+    ###delay = db.Column(db.Integer)
+    ###loss = db.Column(db.Integer)
 
-    def __init__(self,test_name):
+    def __init__(self,test_name,bandwidth,delay,loss):
         self.test_name = test_name
-        #self.puppy_id = puppy_id
-
+        ###self.bandwidth = bandwidth
+        ###self.delay = delay
+        ###self.loss = loss
+        
     def __repr__(self):
         return f"Owner Name: {self.test_name}"

@@ -1,5 +1,5 @@
 # This is app.py, this is the main file called.
-from slproject import app
+from slproject import app,db
 from flask import render_template
 
 
@@ -20,4 +20,5 @@ def home(page=None):
 
 
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True,host='0.0.0.0')
