@@ -1,11 +1,11 @@
-{% extends "base_sdwan.html" %}
+{% extends "sdwan_base_template.html" %}
 {%block content%}
 <title>{%block title%}List Demo Tests{%endblock%}</title>
 <div class="jumbotron">
 <h1>Welcome to the List Test Page</h1>
 <ul>
     {% for test in tests %}
-    <li>{{test.test_name}} <a href="{{url_for('del_test', id=test.id)}}"> delete</a></li>
+    <li>{{test.test_name}} <a href="{{url_for('sdwan.del_test', id=test.id)}}"> delete</a></li>
     {% endfor %}
 </ul>
 </div>
