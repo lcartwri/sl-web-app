@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_home.html" %}
 {%block content%}
 <title>Home Landing Page</title>
 <h1>Welcome to the Enterprise Solutions Lab Landing Page</h1>
@@ -16,7 +16,7 @@
         <div class="card-body">
           This is SDWAN
           <br>
-          <a href="{{url_for('sdwan_home')}}">Landing Page</a>
+          <a href="{{url_for('home')}}">Landing Page</a>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
         <div class="card-body">
           This is SDA
           <br>
-          <a href="{{url_for('sda_home')}}">Landing Page</a>
+          <a href="{{url_for('home')}}">Landing Page</a>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
         <div class="card-body">
           This is ACI
           <br>
-          <a href="{{url_for('aci_home')}}">Landing Page</a>
+          <a href="{{url_for('home')}}">Landing Page</a>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@
           <div class="card-body">
             This is Cross Domain
             <br>
-            <a href="{{url_for('xdomain_home')}}">Landing Page</a>
+            <a href="{{url_for('home')}}">Landing Page</a>
           </div>
         </div>
       </div>
