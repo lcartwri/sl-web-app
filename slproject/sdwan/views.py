@@ -5,9 +5,7 @@ from slproject import db
 from slproject.models import AarTest
 from slproject.sdwan.forms import AddTest,DelTest
 
-sdwan = Blueprint('sdwan',
-                              __name__,
-                              template_folder='templates/sdwan')
+sdwan = Blueprint('sdwan',__name__,template_folder='templates/sdwan')
 
 @sdwan.route('/')
 def home():
@@ -27,12 +25,12 @@ def add_test():
         db.session.commit()
 
         return redirect(url_for('sdwan.list_test'))
-    return render_template('add_test.html',form=form)
+    return render_template('sdwan_add_test.html',form=form)
 
 @sdwan.route('/list_test')
 def list_test():
     tests = AarTest.query.all()
-    return render_template('list_test.html',tests=tests)
+    return render_template('sdwan_list_test.html',tests=tests)
 
 @sdwan.route('/delete_test<int:id>', methods=['GET', 'POST'])
 def del_test(id):

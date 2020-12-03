@@ -25,12 +25,12 @@ def add_test():
         db.session.commit()
 
         return redirect(url_for('sda.list_test'))
-    return render_template('sda.add_test.html',form=form)
+    return render_template('sda_add_test.html',form=form)
 
 @sda.route('/list_test')
 def list_test():
     tests = SdaTest.query.all()
-    return render_template('sda.list_test.html',tests=tests)
+    return render_template('sda_list_test.html',tests=tests)
 
 @sda.route('/delete_test<int:id>', methods=['GET', 'POST'])
 def del_test(id):
