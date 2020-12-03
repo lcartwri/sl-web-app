@@ -13,3 +13,6 @@ class DelTest(FlaskForm):
     id = IntegerField('ID of test being removed: ')
     submit = SubmitField('Delete Test')
 
+class ShowControllers(FlaskForm):
+
+    submit = SubmitField('List Controllers')

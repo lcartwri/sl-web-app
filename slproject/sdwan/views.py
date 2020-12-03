@@ -4,6 +4,8 @@ from flask import Blueprint,render_template,redirect,url_for
 from slproject import db
 from slproject.models import AarTest
 from slproject.sdwan.forms import AddTest,DelTest
+from slproject.sdwan.api_calls.sdwan_api import get_devicecontrollers
+from slproject.sdwan.api_calls.auth import login
 
 sdwan = Blueprint('sdwan',__name__,template_folder='templates/sdwan')
 
@@ -40,3 +42,13 @@ def del_test(id):
     db.session.commit()
 
     return redirect(url_for('sdwan.list_test'))
+
+
+
+###############
+###NEW VIEWS###
+###############
+
+@sdwan.route('/show_controllers')
+def show_controllers():
+    return get_devicecontrollers
