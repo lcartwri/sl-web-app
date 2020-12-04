@@ -1,3 +1,26 @@
+
+body{
+    font-family: Georgia, Verdana, sans-serif;
+    font-size: 18px;
+}
+
 h1 {
-    color:gray;
+    color: gray;
+    font-size: 40px;
+    font-family: Copperplate;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h5{
+    text-align: center;
+}
+
+.main_buttons{
+    font-size: 30px;
+
+}
+
+.main_body{
+    text-align: center;
 }
