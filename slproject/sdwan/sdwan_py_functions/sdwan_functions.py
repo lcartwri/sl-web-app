@@ -13,20 +13,6 @@ def get_devicecontrollers():
     response_controller = session.get(url, verify=False)
     devices = response_controller.json()['data']
     return devices
-#    for device in devices:
-#        if device['deviceType']=='vmanage':
-#            print('success - we have a vmanage')
-#        print(f"Device controller => {device['deviceType']} with System IP address {device['deviceIP']}")
-
-
-device_list = get_devicecontrollers()
-
-for device in device_list:
-    if device['deviceType'] == 'vmanage':
-        print('The name of the device is: ',device['host-name'])
-
-
-#print(vmanage)
 
 if __name__ == "__main__":
    response = get_devicecontrollers()
