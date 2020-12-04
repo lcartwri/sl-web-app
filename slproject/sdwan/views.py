@@ -4,12 +4,19 @@ from flask import Blueprint,render_template,redirect,url_for
 from slproject import db
 from slproject.models import AarTest
 from slproject.sdwan.forms import AddTest,DelTest
+from slproject.sdwan.sdwan_py_functions.sdwan_functions import get_devicecontrollers
+from slproject.sdwan.sdwan_py_functions.auth import login
 
 sdwan = Blueprint('sdwan',__name__,template_folder='templates/sdwan')
 
+
 @sdwan.route('/')
 def home():
-    return render_template('sdwan_index.html')
+    controller_name = get_devicecontrollers()
+    return render_template('sdwan_index.html',controller_name=controller_name)
+######@sdwan.route('/')
+######def home():
+######    return render_template('sdwan_index.html')
 
 
 @sdwan.route('/add_test', methods=['GET', 'POST'])
