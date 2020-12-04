@@ -1,3 +1,4 @@
+
 body{
     font-family: Georgia, Verdana, sans-serif;
     font-size: 18px;
@@ -8,6 +9,7 @@ h1 {
     font-size: 40px;
     font-family: Copperplate;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 h5{
