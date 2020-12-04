@@ -7,5 +7,19 @@
 <br>
 <a href="https://vmanage-solution.cisco-lab.com" target="_blank">Let's see this in action!</a>
 </div>
+<ul>
+    {% for item in controller_name %}
+    <li>{{item['deviceType']}}</li>
+    <li>
+        {{item['host-name']}}
+    </li>
+    {% endfor %}
+</ul>
+    <h1>Controllers in the Lab</h1>
+    {% for item in controller_name %}
+        <span class="badge badge-primary">{{ item['deviceType'] }}</span>
+        <span class="badge badge-primary">{{ item['host-name'] }}</span>
+        <hr>
+    {% endfor %}
 {% endblock %}
 
