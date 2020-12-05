@@ -1,8 +1,8 @@
 {% extends "base_index.html" %}
 {%block content%}
 <title>Home Landing Page</title>
-<h1>Welcome to the Enterprise Solutions Lab Landing Page</h1>
-<div id="accordion">
+<h1>Welcome to the Solutions Lab Landing Page</h1>
+<div id="accordion" class="main_enterprise_dropdown">
     <div class="card">
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
@@ -12,7 +12,7 @@
         </h5>
       </div>
   
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body main_body">
           This is SDWAN
           <br>
@@ -69,6 +69,7 @@
           </div>
         </div>
       </div>
+    </div>
 
-  </div>
+
 {% endblock %}
